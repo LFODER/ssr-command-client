@@ -11,7 +11,8 @@
 - 支持制定本地端口启动代理
 - 支持测试ShadowsocksR节点真连接延迟(多线程)
 - 支持测试ShadowsocksR节点是否被tcp阻断(多线程)
-- 支持ShadowsocksR节点测速(多线程)
+- 支持ShadowsocksR单节点测速(上传+下载)
+- 支持ShadowsocksR全节点多线程测速(仅支持Python<=3.7, Python>=3.8会有bug，待修复)
 - 支持打印ShadowsocksR节点Json和二维码
 - 整合ShadowsocksR源码到项目中
 - 支持生成基础版clash配置文件 
@@ -33,15 +34,16 @@ python(pip3) install -r requirement.txt
 
 ## 使用方法
 ```angular2html
-usage: ssr-commnd-client [-h] [-l] [-p local_port] [-s ssr_id] [-S ssr_id] [-u] [-v]
-                         [--display-json ssr_id] [--test-speed] [--fast-node]
-                         [--setting-url ssr_subscribe_url] [--upgrade]
-                         [--setting-address ssr_local_address] [--list-url]
-                         [--add-url ssr_subscribe_url] [--remove-url ssr_subscribe_url]
-                         [--list-address] [--parse-url ssr_url] [--add-ssr ssr_url]
-                         [--test-again ssr_node_id] [--print-qrcode ssr_node_id]
-                         [--setting-global-proxy] [--setting-pac-proxy]
-                         [--close-system-proxy] [--generate-clash]
+usage: ssr-cli [-h] [-l] [-p local_port] [-s ssr_id] [-S [ssr_id]] [-u] [-v]
+               [--upgrade] [--generate-clash] [--display-json ssr_id]
+               [--test-all-speed] [--test-speed ssr_id] [--fast-node]
+               [--setting-url ssr_subscribe_url]
+               [--setting-address ssr_local_address] [--list-url]
+               [--add-url ssr_subscribe_url] [--remove-url ssr_subscribe_url]
+               [--list-address] [--parse-url ssr_url] [--add-ssr ssr_url]
+               [--test-again ssr_node_id] [--print-qrcode ssr_node_id]
+               [--setting-global-proxy] [--setting-pac-proxy]
+               [--close-system-proxy]
 
 ShadowsocksR 命令行客户端
 
@@ -91,7 +93,9 @@ optional arguments:
 
 --test-again SSR_NODE_ID 重新测试ssr节点连接状态，SSR_NODE_ID为节点ID，可从打印列表中获得
 
---test-speed 批量ssr节点测速
+--test-all-speed 批量ssr节点测速
+
+--test-speed SSR_NODE_ID 测速单个ssr节点
 
 --print-qrcode SSR_NODE_ID 打印ssr节点二维码，SSR_NODE_ID为节点ID，可从打印列表中获得
 
