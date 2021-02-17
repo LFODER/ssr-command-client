@@ -19,7 +19,7 @@ def get_parser():
                                             color.yellow('. If you have any questions,you can send e-mails to ') +
                                                          color.green('tyrantlucifer@gmail.com'))
     parser.add_argument("-l", "--list", action="store_true", help="show ssr list")
-    parser.add_argument("-p", "--port", nargs='?', const=1080, metavar="local_port", type=int,
+    parser.add_argument("-p", "--port", default=1080, metavar="local_port", type=int,
                         help="assign local proxy port,use with -s")
     parser.add_argument("-s", "--start", metavar="ssr_id", type=int, help="start ssr proxy")
     parser.add_argument("-S", "--stop", nargs='?', const=1, metavar="ssr_id", type=int, help="stop ssr proxy")
