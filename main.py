@@ -5,7 +5,7 @@
 '''
 
 import argparse
-from funcitions.Functions import *
+from functions.Functions import *
 
 u = Update()
 d = Display()
